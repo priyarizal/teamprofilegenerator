@@ -1,86 +1,169 @@
-// TODO: Include packages needed for this application
+const fs = require("fs");
 const inquirer = require("inquirer");
-const fs = require('fs');
-const generateMarkDown = require("../utils/generateMarkdown");
-// const choices = require("inquirer/lib/objects/choices");
+const generateHtml = require("./src/generateHtml");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
-// TODO: Create an array of questions for user input
-const questions = [
+const managerQuestions = [
+    // manager question section
     {
-        name: 'Title',
-        type: "input",
-        message: "What is the title of your project?",
+        type: 'input',
+        message: 'What is the team managers name?',
+        name: 'managerName',
     },
     {
-        name: 'Description',
-        type: "input",
-        message: "What is the description of your project?",
+        type: 'input',
+        message: 'What is the team managers id?',
+        name: 'managerId',
     },
     {
-        name: 'Instructions',
-        type: "input",
-        message: "Please provide instructions on how to use this project",
+        type: 'input',
+        message: 'What is the team managers email?',
+        name: 'managerEmail',
     },
     {
-        name: 'Installation',
-        type: "input",
-        message: "How do we install your project?",
+        type: 'input',
+        message: 'What is the team managers office number?',
+        name: 'managerOffice',
     },
-    {
-        name: 'Usage',
-        type: "input",
-        message: "how do we use your project?",
-    },
-    {
-        name: 'Technologies',
-        type: "checkbox",
-        message: "What technologies did you use for your project",
-        choices: ["HTML", "CSS", "JavaScript", "JQuery", "Bootstrap", "Node.js"]
-    },
-    {
-        name: 'License',
-        type: "list",
-        message: "What liscense did you use?",
-        choices: ["MIT", "ISC", "IBM", "BSD-3", 'none'],
-    },
-    {
-        name: 'Contributions',
-        type: "input",
-        message: "Who contributed on this project?",
-    },
-    {
-        name: 'Tests',
-        type: "input",
-        message: "Have you tested your project?",
-    },
-    {
-        name: 'Github',
-        type: "input",
-        message: "Link to your github",
-    },
-    {
-        name: 'Email',
-        type: "input",
-        message: "Link to your Email",
-    },
-    {
-        name: 'LinkedIn',
-        type: "input",
-        message: "Link to your LinkedIn",
-    },
+];
+// this prompt message creates a list of types of employees to add
 
+const employeeType = [
+    {
+        type: 'list',
+        message: 'Which type of team member would you like to add?',
+        name: 'employeeType',
+        choices: ['Engineer', 'Intern', 'None'],
+    },
 ];
 
-function writeTofile(fileName, data) {
-    fs.writeFile(fileName, generateMarkDown(data), (err) => err ? console.log(err) : console.log("SUCCESS!"))
+// engineer question section
+function createEngineer() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is your engineers name?',
+                name: 'engineerName',
+            },
+            {
+                type: 'input',
+                message: 'What is your engineers ID',
+                name: 'engineerId',
+            },
+            {
+                type: 'input',
+                message: 'What is your engineers email?',
+                name: 'engineerEmail',
+            },
+            {
+                type: 'input',
+                message: 'What is your engineers Github username?',
+                name: 'engineerGithub',
+            },
+        ])
+        .then((answers) => {
+            console.log(answers)
 
+            const engineer = new Engineer(answer.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGithub)
+            teamMembers.push(engineer)
+        })
+};
+
+// intern question section
+function createIntern() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is your interns name?',
+                name: 'internName',
+            },
+            {
+                type: 'input',
+                message: 'What is your interns ID?',
+                name: 'internId',
+            },
+            {
+                type: 'input',
+                message: 'What is your interns email?',
+                name: 'internEmail',
+            },
+            {
+                type: 'input',
+                message: 'What is your intens school?',
+                name: 'internSchool',
+            },
+        ])
+        .then((answers) => {
+            console.log(answers)
+
+            const intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool)
+            teamMembers.push(intern)
+        })
+};
+
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, generateHtml(data), (err) => err ? console.log(err) : console.log("SUCCESS!"))
 }
 
+// TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-        .then((responses) => {
-            writeTofile("README2.md", responses);
-        });
+    inquirer
+        .prompt(managerQuestions)
+
+        .then((answers) => {
+            console.log(answers)
+
+            const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOffice)
+            teamMembers.push(manager)
+            buildTeam();
+
+            // writeToFile("index.html", response);
+
+
+        }
+
+        );
 }
 
+function buildTeam() {
+    inquirer
+        .prompt(employeeType)
+
+        .then((userChoice) => {
+            switch (userChoice.employeeType) {
+                case "Engineer":
+                    createEngineer()
+                    break;
+                case "Intern":
+                    createIntern()
+                    break;
+                default:
+                    createTeam()
+            }
+
+        })
+
+}
+
+// check in with tutor if function is correct 
+//should employeetype also be function
+function createTeam() {
+    if (userChoice.employeeType === createEngineer) {
+        return teamMembers
+    }
+    if (userChoice.employeeType === createIntern) {
+        return teamMembers
+    }
+}
+
+// Function call to initialize app
 init();
+
+    //in switch statment our default needs to be a function that actually creates our team 
+    //create test/watch youtube vid on jest
+    //figure out what methods i will need inside my classes
+    // what does my team array do? create a function to display team members
