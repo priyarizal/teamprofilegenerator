@@ -1,19 +1,14 @@
-const { describe } = require("yargs")
-const employee = require("./engineer.test")
+
+const employee = require("../lib/employee")
 
 describe("engineer", () => {
     describe ("Initilization", () => {
-        it ("should return an object containing a ")
-
+        it ("should be created with name, id, and email ")
+             
+        const teamMembers = new employee ("Zula", 2, "Zulaisakitty@kitty.com")
     })
+    const employee = "Zula";
+    const id = 2;
+    const email = "Zulaisakitty@kitty.com"
 });
-
-it("should set 'number' when created", () => {
-    // Arrange
-    const num = 108;
-    // Act
-    const obj = new Arithmetic(num);
-    // Assert
-    expect(obj.number).toEqual(num);
-  });
 
