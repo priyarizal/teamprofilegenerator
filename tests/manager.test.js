@@ -1,4 +1,4 @@
-const employee = require("../lib/manager")
+const Employee = require("../lib/Manager")
 
 describe("manager", () => {
     describe ("Initilization", () => {
@@ -10,3 +10,4 @@ describe("manager", () => {
     const id = 2;
     const email = "kothiiszulasson@kitty.com"
 });
+
