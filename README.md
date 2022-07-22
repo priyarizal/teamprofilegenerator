@@ -77,10 +77,10 @@ describe("Intern", () => {
 node index.js
 npm run test
 ```
-
+ ![command-line](./images/sc.png)
 
 ## Gif walkthrough
-![gif of generating readme through command line](./develop/assets/readme%20generator.gif)
+![gif of demo](./images/teamgenerator.gif)
 
 ## License
 MIT
