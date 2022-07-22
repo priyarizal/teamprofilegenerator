@@ -22,10 +22,56 @@ This application was invoked by using the following command.
 node index.js
 ```
 
+## Code Snippets
+ - TDD 
+
+ ```
+ const Employee = require("../lib/Employee");
+
+describe("employee", () => {
+    describe("Initilization", () => {
+        it("should be created with name, id, and email ", () => {
+
+            const employee = new Employee("Zula", 2, "Zulaisakitty@kitty.com")
+
+            expect(typeof(employee)).toBe("object");
+            // expect(employee.email).tobe("value")
+        })
+
+    })
+})
+
+ ```
+
+ ```
+ const Intern = require("../lib/Intern");
+
+describe("Intern", () => {
+    describe(" ", () => {
+    it('should return intern for getrole', () => {
+        const expectedValue = "Intern"
+        const intern = new Intern ("Priya", 44,"piya22@gmail.com", "Mills College")
+    expect(intern.getRole()).toBe(expectedValue)
+    });
+})
+})
+
+describe("Intern", () => {
+    describe(" ", () => {
+    it('should get school', () => {
+        const expectedValue = "Mills College"
+        const intern = new Intern ("Priya", 44, "piya22@gmail.com", "Mills College")
+    expect(intern.getSchool()).toBe(expectedValue)
+    });
+})
+})
+```
+
 ## Technologies Used
 - JavaScript
 - Node.js
 - NPM
+- Jest
 
 
 ## Gif walkthrough
