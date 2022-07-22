@@ -1,18 +1,18 @@
 
+const { execPath } = require("process");
 const Employee = require("../lib/Employee");
 
-describe("engineer", () => {
-    describe ("Initilization", () => {
-        it ("should be created with name, id, and email ")
-             
-        const teamMembers = new Employee ("Zula", 2, "Zulaisakitty@kitty.com")
+describe("employee", () => {
+    describe("Initilization", () => {
+        it("should be created with name, id, and email ", () => {
 
-        expect(teamMember).toEqual()
+            const employee = new Employee("Zula", 2, "Zulaisakitty@kitty.com")
 
-    const employee = "Zula";
-    const id = 2;
-    const email = "Zulaisakitty@kitty.com"
-})
+            expect(typeof(employee)).toBe("object");
+            // expect(employee.email).tobe("value")
+        })
+
+    })
 })
 
 
