@@ -1,13 +1,22 @@
-const Employee = require("../lib/Manager")
+const Manager = require("../lib/Manager")
 
 describe("manager", () => {
     describe ("Initilization", () => {
-        it ("should be created with name, id, email and github ")
-             
-        const teamMembers = new employee ("Kothi", 3, "kothiiszulasson@kitty.com", "kothirizal")
-    })
-    const employee = "Kothi";
-    const id = 2;
-    const email = "kothiiszulasson@kitty.com"
-});
+        it ("should return manager for getrole", () => {
+             const expectedValue = "Manager"
+        const manager = new Manager ("Koko", 4, "kothiiszulasson@kitty.com", "office33")
+        expect(manager.getRole()).toBe(expectedValue)
+    });    
+})
+})
+
+describe("manager", () => {
+    describe(" ", () => {
+    it('should get office Number', () => {
+        const expectedValue = "office33"
+        const manager = new Manager ("Koko", 4, "kothiiszulasson@kitty.com", "office33")
+    expect(manager.getOfficeNumber()).toBe(expectedValue)
+    });
+})
+})
 
