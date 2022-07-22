@@ -1,5 +1,5 @@
 
-const { execPath } = require("process");
+// const { execPath } = require("process");
 const Employee = require("../lib/Employee");
 
 describe("employee", () => {
