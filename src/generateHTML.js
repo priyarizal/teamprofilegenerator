@@ -27,13 +27,13 @@ const generateEngineer = engineer => {
     <div class="card employee-card">
     <div class="card-header">
         <h2 class="card-title">${engineer.getName()}</h2>
-        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${engineer.getRole()}</h3>
+        <h3 class="card-title"><i <i class="fa fa-mortar-board"></i></i>${engineer.getRole()}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
             <li class="list-group-item">ID: ${engineer.getId()}</li>
             <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-            <li class="list-group-item">Github: ${engineer.getGithub()}</li>
+            <li class="list-group-item">Github: <a target= "_blank" href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
         </ul>
     </div>
 </div>
@@ -44,13 +44,13 @@ const generateIntern = intern => {
     <div class="card employee-card">
     <div class="card-header">
         <h2 class="card-title">${intern.getName()}</h2>
-        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${intern.getRole()}</h3>
+        <h3 class="card-title"><i class="fa fa-address-card-o"></i></i>${intern.getRole()}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
             <li class="list-group-item">ID: ${intern.getId()}</li>
             <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
-            <li class="list-group-item">School: ${intern.getSchool()}</li>
+            <li class="list-group-item">School:<a target= "_blank" href ="https://www.${intern.getSchool()}.edu">${intern.getSchool()}</a></li>
         </ul>
     </div>
 </div>
@@ -81,7 +81,7 @@ function generateHTML(data) {
 
     return ` 
  
-< !DOCTYPE html >
+<!DOCTYPE html >
     <html lang="en">
 
         <head>

@@ -17,10 +17,6 @@ same with school
 ## Installation
  To utilize the TeamMember generator within your command line, users' would need to install node.js and npm inquirer and jest package. 
 
-This application was invoked by using the following command. 
- ```bash
-node index.js
-```
 
 ## Code Snippets
  - TDD 
@@ -74,8 +70,24 @@ describe("Intern", () => {
 - Jest
 
 
+## Tests 
+- Run the following command to run test
+
+ ```terminal
+node index.js
+npm run test
+```
+
+
 ## Gif walkthrough
 ![gif of generating readme through command line](./develop/assets/readme%20generator.gif)
 
 ## License
 MIT
+
+## Contributors
+- Alejandra Izquierdo
+
+
+## Questions
+If you have any questions about the project, please feel free to reach me at priya.rizal2@gmail.com
